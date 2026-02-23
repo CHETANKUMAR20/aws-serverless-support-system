@@ -1,3 +1,12 @@
+# 🚀 AWS Serverless Support System
+
+![AWS](https://img.shields.io/badge/AWS-Serverless-orange)
+![Terraform](https://img.shields.io/badge/IaC-Terraform-blue)
+![Node.js](https://img.shields.io/badge/Runtime-Node.js-green)
+![DynamoDB](https://img.shields.io/badge/Database-DynamoDB-lightgrey)
+![API Gateway](https://img.shields.io/badge/API-HTTP%20API-yellow)
+![Status](https://img.shields.io/badge/Project-Completed-brightgreen)
+
 🚀 AWS Serverless Support System
 📌 Project Overview
 
