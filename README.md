@@ -53,21 +53,24 @@ It provides two core endpoints:
 ---
 🏛 High-Level Architecture
 
-```mermaid
-flowchart LR
+Serverless API flow:
 
-    subgraph Application_Flow["Serverless API Flow"]
-        A[Client] --> B[API Gateway]
-        B --> C[AWS Lambda]
-        C --> D[DynamoDB]
-    end
+```flowchart LR
+    Client["Client (Web / Postman)"]
+    APIGW["API Gateway (HTTP API)"]
+    Lambda["AWS Lambda (Node.js 18)"]
+    Dynamo["Amazon DynamoDB (Tickets Table)"]
 
-    subgraph Infrastructure_Flow["Infrastructure Flow"]
-        T[Terraform] --> S[S3 Remote Backend]
-        T --> L[DynamoDB State Lock]
-        S --- L
-    end
+    Client -->|HTTPS| APIGW
+    APIGW --> Lambda
+    Lambda -->|Read / Write| Dynamo
 ```
+Infrastructure flow:
+
+Terraform → S3 Remote Backend → DynamoDB State Lock
+
+Fully reproducible & version-controlled infrastructure
+
 
 ---
 ## 🏗 Architecture Overview
