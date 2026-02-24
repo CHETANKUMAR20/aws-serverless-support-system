@@ -1,5 +1,3 @@
-# 🚀 AWS Serverless Support System
-
 ![AWS](https://img.shields.io/badge/AWS-Serverless-orange)
 ![Terraform](https://img.shields.io/badge/IaC-Terraform-blue)
 ![Node.js](https://img.shields.io/badge/Runtime-Node.js-green)
@@ -7,119 +5,284 @@
 ![API Gateway](https://img.shields.io/badge/API-HTTP%20API-yellow)
 ![Status](https://img.shields.io/badge/Project-Completed-brightgreen)
 
+
+
 🚀 AWS Serverless Support System
+
+Production-Grade Serverless Ticketing API using Terraform
+
+🎯 Project Impact
+
+Designed and deployed a scalable, production-style serverless backend system on AWS using fully modular Terraform infrastructure.
+
+This project simulates real-world DevOps engineering practices including:
+
+Remote state management with locking
+
+Environment isolation (Dev & Prod)
+
+Least privilege IAM implementation
+
+Secure and scalable serverless design
+
 📌 Project Overview
 
-A production-grade, modular AWS Serverless backend built using:
+---
 
-API Gateway (HTTP API)
+The AWS Serverless Support System is a fully automated ticketing API backend built using AWS serverless services and provisioned entirely with Terraform.
 
-AWS Lambda (Node.js 18)
+It provides two core endpoints:
 
-DynamoDB (On-demand)
+POST /tickets → Create a support ticket
 
-IAM (Least Privilege)
+GET /tickets/{id} → Retrieve ticket information
 
-Terraform (Modular, Multi-environment)
+💡 What This Project Demonstrates
 
-Remote Backend (S3 + DynamoDB Locking)
+Infrastructure as Code (IaC)
 
-🏗 Architecture
+Production-grade remote backend configuration
+
+Secure IAM implementation (Least Privilege)
+
+Multi-environment management
+
+Auto-scaling serverless architecture
+
+Cloud debugging using CloudWatch logs
+
+🏛 High-Level Architecture
+
+Serverless API flow:
 
 Client → API Gateway → Lambda → DynamoDB
 
-Infrastructure managed using Terraform modules.
+Infrastructure flow:
 
-📁 Project Structure
-environments/
-modules/
-lambda-app/
-bootstrap/
+Terraform → S3 Remote Backend → DynamoDB State Lock
 
-modules/ – Reusable Terraform modules
+Fully reproducible & version-controlled infrastructure
 
-environments/ – Dev & Prod isolation
+🏗 Architecture Diagram
+Infrastructure & Application Flow
+<p align="center"> <img src="docs/architecture/architecture diagram 2.png" width="850"> </p>
+🔄 Request Flow
 
-lambda-app/ – Clean architecture Lambda code
+Client sends HTTPS request
 
-bootstrap/ – Remote backend setup
+API Gateway triggers Lambda
 
-🔐 Security Features
+Lambda interacts with DynamoDB
 
-IAM Least Privilege
+IAM enforces least privilege
 
-Remote State Locking
+Logs stored in CloudWatch
 
-S3 Public Access Blocked
+Terraform state stored in S3 with DynamoDB lock
 
-Point-in-time recovery enabled
+🧱 Project Structure
+serverless-support-system/
+│
+├── bootstrap/              # Creates backend (S3 + lock table)
+├── environments/
+│     ├── dev/
+│     └── prod/
+├── modules/
+│     ├── apigateway/
+│     ├── dynamodb/
+│     ├── iam/
+│     └── lambda/
+├── lambda-app/
+├── docs/
+└── screenshots/
 
-X-Ray Tracing
+✔ Modular
+✔ Environment isolated
+✔ Remote state secured
+✔ Production structured
 
-Tagged resources
+🔐 Remote Backend (Production Practice)
 
-⚙ Deployment Steps
-1️⃣ Bootstrap Backend
-```
+Terraform state is stored in:
+
+S3 Bucket
+
+DynamoDB Table (State Locking)
+
+Backend Screenshot
+<p align="center"> <img src="docs/screenshots/08-terraform-backend-s3.png" width="700"> </p> <p align="center"> <img src="docs/screenshots/9-s3 stored tfstatefile.png" width="700"> </p>
+
+This prevents:
+
+State corruption
+
+Parallel apply conflicts
+
+Accidental overwrites
+
+🌍 Environment Separation (Dev & Prod)
+Environment	API Gateway	DynamoDB Table
+Dev	support-api-dev	support-tickets-dev
+Prod	support-api-prod	support-tickets-prod
+
+This ensures safe testing without affecting production.
+
+🔎 Infrastructure Verification (Screenshots)
+🌐 API Gateway
+<p align="center"> <img src="docs/screenshots/02-api-gateway-overview.png" width="750"> </p>
+⚡ Lambda Function
+<p align="center"> <img src="docs/screenshots/03-lambda-overview.png" width="750"> </p>
+Environment Variables
+<p align="center"> <img src="docs/screenshots/04-lambda-environment-variable.png" width="750"> </p>
+🗄 DynamoDB Table
+<p align="center"> <img src="docs/screenshots/05-dynamodb-table.png" width="750"> </p>
+Item Stored
+<p align="center"> <img src="docs/screenshots/06-dynamodb-item.png" width="750"> </p>
+📜 CloudWatch Logs
+<p align="center"> <img src="docs/screenshots/07-cloudwatch-logs.png" width="750"> </p>
+🎟 Ticket Created Successfully
+<p align="center"> <img src="docs/screenshots/ticket created successfully.png" width="750"> </p>
+🚧 Challenges Faced & Solutions
+1️⃣ Terraform State Lock Conflict
+
+Issue: Lock errors during apply
+Solution:
+
+Used terraform force-unlock
+
+Separated state per environment
+
+Implemented DynamoDB locking properly
+
+2️⃣ IAM AccessDeniedException
+
+Issue: Lambda unable to access DynamoDB
+Solution:
+
+Attached scoped IAM policy
+
+Restricted to specific table ARN
+
+Followed least privilege
+
+3️⃣ Lambda Code Not Updating
+
+Issue: Changes not reflected
+Solution:
+
+Used source_code_hash
+
+Proper zip packaging
+
+4️⃣ API Gateway 500 Errors
+
+Cause: Missing Lambda permission
+Fix:
+
+Added aws_lambda_permission resource
+
+5️⃣ Environment Variable Drift
+
+Issue: Dev & Prod mismatch
+Fix:
+
+Parameterized variables properly
+
+💰 Cost Estimation (Monthly – Low Traffic)
+Service	Estimated Cost
+AWS Lambda (low usage)	~$0–2
+API Gateway	~$1–3
+DynamoDB (On-Demand)	~$1–4
+S3 (state storage)	<$1
+CloudWatch Logs	~$1
+Estimated Total: ~$5–10/month
+
+Why cost-effective?
+
+No EC2 servers
+
+No idle compute cost
+
+Fully managed services
+
+Pay-per-request model
+
+⚙️ How to Run This Project
+1️⃣ Clone Repository
+git clone https://github.com/<your-username>/serverless-support-system.git
+cd serverless-support-system
+2️⃣ Configure AWS Credentials
+aws configure
+
+OR use environment variables:
+
+export AWS_ACCESS_KEY_ID=""
+export AWS_SECRET_ACCESS_KEY=""
+export AWS_DEFAULT_REGION="ap-south-1"
+3️⃣ Bootstrap Backend (One Time)
 cd bootstrap
 terraform init
 terraform apply
-```
-2️⃣ Deploy Dev Environment
-```
+
+This creates:
+
+S3 backend bucket
+
+DynamoDB lock table
+
+4️⃣ Deploy Dev Environment
 cd environments/dev
 terraform init
+terraform plan
 terraform apply
-```
-🧪 API Endpoints
-Create Ticket
+5️⃣ Deploy Production
+cd environments/prod
+terraform init
+terraform plan
+terraform apply
+6️⃣ Test API
+
+Use Postman:
 
 POST /tickets
-
-Get Ticket
-
 GET /tickets/{id}
+📈 Why Serverless Architecture?
+✅ Auto Scaling
 
-🧠 Challenges Faced During Development
+Lambda scales automatically without manual intervention.
 
-Runtime.ImportModuleError
+✅ Cost Efficient
 
-Cause: AWS SDK not bundled in Node 18 runtime
+Pay only when requests are processed.
 
-Fix: Installed aws-sdk inside lambda-app and repackaged
+✅ High Availability
 
-Terraform Module Wiring Errors
+AWS managed services provide built-in resilience.
 
-Missing variable definitions
+✅ No Server Management
 
-Incorrect resource references
+No patching, provisioning, or OS management.
 
-Fixed by properly defining module variables
+✅ Faster DevOps Delivery
 
-Remote Backend Initialization Failure
+Combined with Terraform:
 
-Cause: S3 bucket not created before environment init
+Reproducible infra
 
-Fix: Bootstrap phase applied first
+Version controlled infrastructure
 
-Incorrect ZIP Packaging
+Easy multi-environment management
 
-Lambda handler not found
+🧠 What This Project Demonstrates
 
-Fixed by zipping from inside lambda-app directory
+✔ Production-level Terraform
+✔ Secure IAM implementation
+✔ Remote backend best practices
+✔ Debugging real AWS issues
+✔ Scalable serverless architecture
+✔ Clean DevOps repository structure
 
-💰 Cost Model
+👨‍💻 Author
 
-Fully Serverless
-
-Pay-per-request architecture
-
-No always-running services
-
-Cost-optimized design
-
-📸 Screenshots
-
-See /docs/screenshots/ for proof of deployment.
-
-
+Chetan Kumar
+Cloud Administrator | Terraform | AWS | DevOps
