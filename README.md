@@ -114,8 +114,8 @@ DynamoDB Table (State Locking)
 
 Backend Screenshot  
 
-![Backend](docs/screenshots/08-terraform-backend-s3.png)
-![Backend]("docs/screenshots/9-s3-stored-tfstatefile.png") 
+![Backend S3](docs/screenshots/08-terraform-backend-s3.png)
+![Backend State File](docs/screenshots/9-s3-stored-tfstatefile.png)
 
 This prevents:
 
@@ -134,19 +134,18 @@ This ensures safe testing without affecting production.
 
 🔎 Infrastructure Verification (Screenshots)
 🌐 API Gateway
-<p align="center"> <img src="docs/screenshots/02-api-gateway-overview.png" width="750"> </p>
-⚡ Lambda Function
-<p align="center"> <img src="docs/screenshots/03-lambda-overview.png" width="750"> </p>
+![API Gateway](docs/screenshots/02-api-gateway-overview.png)
 Environment Variables
-<p align="center"> <img src="docs/screenshots/04-lambda-environment-variable.png" width="750"> </p>
+
+![Environment Variables](docs/screenshots/04-lambda-environment-variable.png)
 🗄 DynamoDB Table
-<p align="center"> <img src="docs/screenshots/05-dynamodb-table.png" width="750"> </p>
+![DynamoDB Table](docs/screenshots/05-dynamodb-table.png)
 Item Stored
-<p align="center"> <img src="docs/screenshots/06-dynamodb-item.png" width="750"> </p>
+![Item Stored](docs/screenshots/06-dynamodb-item.png)
 📜 CloudWatch Logs
-<p align="center"> <img src="docs/screenshots/07-cloudwatch-logs.png" width="750"> </p>
+![CloudWatch Logs](docs/screenshots/07-cloudwatch-logs.pn)
 🎟 Ticket Created Successfully
-<p align="center"> <img src="docs/screenshots/ticket created successfully.png" width="750"> </p>
+![Ticket Created Successfully](docs/screenshots/ticket created successfully.png)
 🚧 Challenges Faced & Solutions
 1️⃣ Terraform State Lock Conflict
 
@@ -286,8 +285,3 @@ Easy multi-environment management
 ✔ Debugging real AWS issues
 ✔ Scalable serverless architecture
 ✔ Clean DevOps repository structure
-
-👨‍💻 Author
-
-Chetan Kumar
-Cloud Administrator | Terraform | AWS | DevOps
