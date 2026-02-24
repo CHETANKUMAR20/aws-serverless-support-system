@@ -90,6 +90,57 @@ Fully reproducible & version-controlled infrastructure
 
 ![Architecture Diagram](docs/architecture/architecture-diagram.png)
 
+```mermaid
+flowchart LR
+
+%% =======================
+%% Application Layer
+%% =======================
+
+Client["Client (Web / Postman)"]
+APIGW["Amazon API Gateway (HTTP API)"]
+Lambda["AWS Lambda (Node.js 18)"]
+Dynamo["Amazon DynamoDB (support-tickets)"]
+
+Client -->|HTTPS| APIGW
+APIGW -->|Invoke| Lambda
+Lambda -->|Read / Write| Dynamo
+
+%% =======================
+%% Security & Monitoring
+%% =======================
+
+IAM["IAM Role (Least Privilege)"]
+Logs["CloudWatch Logs"]
+XRay["AWS X-Ray"]
+
+Lambda --> IAM
+Lambda --> Logs
+Lambda --> XRay
+
+%% =======================
+%% Terraform Backend
+%% =======================
+
+Terraform["Terraform CLI"]
+S3["S3 Bucket (Terraform State)"]
+Lock["DynamoDB Lock Table"]
+
+Terraform -->|Stores State| S3
+Terraform -->|Acquires Lock| Lock
+S3 --- Lock
+
+%% =======================
+%% CI/CD (Future)
+%% =======================
+
+GitHub["GitHub"]
+Actions["GitHub Actions"]
+
+GitHub --> Actions
+Actions -->|Plan & Apply| Terraform
+```
+
 ---
 ## 🔄 Request Flow
 
