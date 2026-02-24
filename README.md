@@ -90,6 +90,8 @@ Fully reproducible & version-controlled infrastructure
 
 ![Architecture Diagram](docs/architecture/architecture-diagram.png)
 
+## Simple Architecture Overview
+
 ```mermaid
 flowchart LR
 
