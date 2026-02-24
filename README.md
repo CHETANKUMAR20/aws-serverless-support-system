@@ -69,7 +69,16 @@ flowchart LR
 
 Infrastructure flow:
 
-Terraform → S3 Remote Backend → DynamoDB State Lock
+```mermaid
+flowchart LR
+    TF["Terraform CLI"]
+    S3["S3 Bucket (Remote State)"]
+    DDB["DynamoDB Table (State Lock)"]
+
+    TF -->|Stores State| S3
+    TF -->|Acquires Lock| DDB
+    S3 --- DDB
+```
 
 Fully reproducible & version-controlled infrastructure
 
