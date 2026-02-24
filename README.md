@@ -66,7 +66,7 @@ Fully reproducible & version-controlled infrastructure
 🏗 Architecture Diagram
 Infrastructure & Application Flow
 
-<p align="center"> <img src="docs/architecture/architecture%20diagram%201.png" width="850"> </p>  
+![Architecture Diagram](docs/architecture/architecture-diagram-1.png)
 
 🔄 Request Flow
 
