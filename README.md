@@ -114,7 +114,8 @@ DynamoDB Table (State Locking)
 
 Backend Screenshot  
 
-<p align="center"> <img src="docs/screenshots/08-terraform-backend-s3.png" width="700"> </p> <p align="center"> <img src="docs/screenshots/9-s3 stored tfstatefile.png" width="700"> </p>
+![Backend](docs/screenshots/08-terraform-backend-s3.png)
+![tfstatefile](docs/screenshots/9-s320%stored20%tfstatefile.png) 
 
 This prevents:
 
