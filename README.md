@@ -50,7 +50,7 @@ It provides two core endpoints:
 
 - Cloud debugging using CloudWatch logs  
 
-
+---
 🏛 High-Level Architecture
 
 ```mermaid
