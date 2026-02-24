@@ -71,21 +71,23 @@ Infrastructure flow:
 ![Architecture Diagram](docs/architecture/architecture-diagram.png)
 
 ---
-🔄 Request Flow
+## 🔄 Request Flow
 
+```mermaid
 flowchart LR
 
-    A[Client\n(Web / Postman)] -->|HTTPS| B[API Gateway\n(HTTP API)]
-    B --> C[AWS Lambda\n(Node.js 18)]
-    C -->|Read / Write| D[Amazon DynamoDB\n(Tickets Table)]
+    A["Client (Web / Postman)"] -->|HTTPS| B["API Gateway (HTTP API)"]
+    B --> C["AWS Lambda (Node.js 18)"]
+    C -->|Read / Write| D["Amazon DynamoDB (Tickets Table)"]
 
-    C --> E[CloudWatch Logs]
-    C --> F[IAM Role\n(Least Privilege)]
+    C --> E["CloudWatch Logs"]
+    C --> F["IAM Role (Least Privilege)"]
 
-    G[Terraform] --> H[S3 Bucket\n(Terraform State)]
-    G --> I[DynamoDB Lock Table\n(State Locking)]
+    G["Terraform"] --> H["S3 Bucket (Terraform State)"]
+    G --> I["DynamoDB Lock Table (State Locking)"]
 
     H --- I
+```
 
 ---
 🧱 Project Structure
