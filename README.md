@@ -64,15 +64,11 @@ Infrastructure flow:
 ` Fully reproducible & version-controlled infrastructure `
 
 ---
-# 🏗 Architecture Overview
+## 🏗 Architecture Overview
 
   Infrastructure & Application Flow
 
 ![Architecture Diagram](docs/architecture/architecture-diagram.png)
-
-## 🔍 Detailed System Design
-
-![Detailed](docs/architecture/architecture-diagram-1.png)
 
 ---
 🔄 Request Flow
