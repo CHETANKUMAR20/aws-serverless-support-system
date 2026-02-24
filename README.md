@@ -70,17 +70,17 @@ Infrastructure & Application Flow
 
 🔄 Request Flow
 
-Client sends HTTPS request
+Client sends HTTPS request  
 
-API Gateway triggers Lambda
+API Gateway triggers Lambda  
 
-Lambda interacts with DynamoDB
+Lambda interacts with DynamoDB  
 
-IAM enforces least privilege
+IAM enforces least privilege  
 
-Logs stored in CloudWatch
+Logs stored in CloudWatch  
 
-Terraform state stored in S3 with DynamoDB lock
+Terraform state stored in S3 with DynamoDB lock  
 
 🧱 Project Structure
 ```
@@ -99,33 +99,33 @@ serverless-support-system/
 ├── docs/
 └── screenshots/
 ```
-✔ Modular
-✔ Environment isolated
-✔ Remote state secured
-✔ Production structured
+✔ Modular  
+✔ Environment isolated  
+✔ Remote state secured  
+✔ Production structured  
 
-🔐 Remote Backend (Production Practice)
+🔐 Remote Backend (Production Practice)  
 
-Terraform state is stored in:
+Terraform state is stored in:  
 
-S3 Bucket
+S3 Bucket  
 
-DynamoDB Table (State Locking)
+DynamoDB Table (State Locking)  
 
-Backend Screenshot  
+Backend Screenshot    
 
 ![Backend S3](docs/screenshots/08-terraform-backend-s3.png)
 ![Backend State File](docs/screenshots/9-s3-stored-tfstatefile.png)
 
-This prevents:
+This prevents:  
 
-State corruption
+State corruption  
 
-Parallel apply conflicts
+Parallel apply conflicts  
 
-Accidental overwrites
+Accidental overwrites  
 
-🌍 Environment Separation (Dev & Prod)
+🌍 Environment Separation (Dev & Prod)  
 Environment	API Gateway	DynamoDB Table
 Dev	support-api-dev	support-tickets-dev
 Prod	support-api-prod	support-tickets-prod
@@ -147,7 +147,7 @@ Item Stored
 🎟 Ticket Created Successfully
 ![Ticket Created Successfully](docs/screenshots/ticket created successfully.png)
 🚧 Challenges Faced & Solutions
-1️⃣ Terraform State Lock Conflict
+1️⃣ Terraform State Lock Conflict  
 
 Issue: Lock errors during apply
 Solution:
@@ -158,7 +158,7 @@ Separated state per environment
 
 Implemented DynamoDB locking properly
 
-2️⃣ IAM AccessDeniedException
+2️⃣ IAM AccessDeniedException  
 
 Issue: Lambda unable to access DynamoDB
 Solution:
@@ -169,7 +169,7 @@ Restricted to specific table ARN
 
 Followed least privilege
 
-3️⃣ Lambda Code Not Updating
+3️⃣ Lambda Code Not Updating  
 
 Issue: Changes not reflected
 Solution:
@@ -178,14 +178,14 @@ Used source_code_hash
 
 Proper zip packaging
 
-4️⃣ API Gateway 500 Errors
+4️⃣ API Gateway 500 Errors  
 
 Cause: Missing Lambda permission
 Fix:
 
 Added aws_lambda_permission resource
 
-5️⃣ Environment Variable Drift
+5️⃣ Environment Variable Drift  
 
 Issue: Dev & Prod mismatch
 Fix:
@@ -212,39 +212,48 @@ Fully managed services
 Pay-per-request model
 
 ⚙️ How to Run This Project
-1️⃣ Clone Repository
-git clone https://github.com/<your-username>/serverless-support-system.git
+1️⃣ Clone Repository  
+```
+git clone https://github.com/<your-username>/serverless-support-system.git  
 cd serverless-support-system
-2️⃣ Configure AWS Credentials
+```
+2️⃣ Configure AWS Credentials  
 aws configure
 
 OR use environment variables:
-
+```
 export AWS_ACCESS_KEY_ID=""
 export AWS_SECRET_ACCESS_KEY=""
 export AWS_DEFAULT_REGION="ap-south-1"
+```
 3️⃣ Bootstrap Backend (One Time)
+```
 cd bootstrap
 terraform init
 terraform apply
-
+```
 This creates:
 
 S3 backend bucket
 
 DynamoDB lock table
 
-4️⃣ Deploy Dev Environment
+4️⃣ Deploy Dev Environment  
+```
 cd environments/dev
 terraform init
 terraform plan
 terraform apply
-5️⃣ Deploy Production
+```
+5️⃣ Deploy Production  
+```
 cd environments/prod
 terraform init
 terraform plan
 terraform apply
-6️⃣ Test API
+```
+
+6️⃣ Test API  
 
 Use Postman:
 
@@ -255,19 +264,19 @@ GET /tickets/{id}
 
 Lambda scales automatically without manual intervention.
 
-✅ Cost Efficient
+✅ Cost Efficient  
 
 Pay only when requests are processed.
 
-✅ High Availability
+✅ High Availability  
 
 AWS managed services provide built-in resilience.
 
-✅ No Server Management
+✅ No Server Management  
 
 No patching, provisioning, or OS management.
 
-✅ Faster DevOps Delivery
+✅ Faster DevOps Delivery  
 
 Combined with Terraform:
 
@@ -277,11 +286,11 @@ Version controlled infrastructure
 
 Easy multi-environment management
 
-🧠 What This Project Demonstrates
+🧠 What This Project Demonstrates  
 
-✔ Production-level Terraform
-✔ Secure IAM implementation
-✔ Remote backend best practices
-✔ Debugging real AWS issues
-✔ Scalable serverless architecture
-✔ Clean DevOps repository structure
+✔ Production-level Terraform  
+✔ Secure IAM implementation  
+✔ Remote backend best practices  
+✔ Debugging real AWS issues  
+✔ Scalable serverless architecture  
+✔ Clean DevOps repository structure  
