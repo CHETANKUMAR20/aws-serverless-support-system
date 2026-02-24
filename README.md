@@ -115,7 +115,7 @@ DynamoDB Table (State Locking)
 Backend Screenshot  
 
 ![Backend](docs/screenshots/08-terraform-backend-s3.png)
-![Backend](docs/screenshots/9-s320%stored20%tfstatefile.png) 
+![Backend]("docs/screenshots/9-s320%stored20%tfstatefile.png") 
 
 This prevents:
 
