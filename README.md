@@ -59,10 +59,11 @@ Infrastructure flow:
 
 [` Terraform → S3 Remote Backend → DynamoDB State Lock `]
 
-Fully reproducible & version-controlled infrastructure  
+` Fully reproducible & version-controlled infrastructure `
 
-🏗 Architecture Diagram
-Infrastructure & Application Flow
+---
+# 🏗 Architecture Diagram
+  Infrastructure & Application Flow
 
 ![Architecture Diagram](docs/architecture/architecture-diagram.png)
 
