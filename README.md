@@ -60,13 +60,17 @@ Tagged resources
 
 ⚙ Deployment Steps
 1️⃣ Bootstrap Backend
+```
 cd bootstrap
 terraform init
 terraform apply
+```
 2️⃣ Deploy Dev Environment
+```
 cd environments/dev
 terraform init
 terraform apply
+```
 🧪 API Endpoints
 Create Ticket
 
