@@ -311,7 +311,7 @@ Why cost-effective?
 
 1️⃣ Clone Repository  
 ```
-git clone https://github.com/<your-username>/serverless-support-system.git  
+git clone https://github.com/CHETANKUMAR20/aws-serverless-support-system.git  
 cd serverless-support-system
 ```
 2️⃣ Configure AWS Credentials  
