@@ -5,12 +5,13 @@
 ![API Gateway](https://img.shields.io/badge/API-HTTP%20API-yellow)
 ![Status](https://img.shields.io/badge/Project-Completed-brightgreen)
 
+---
 🚀 AWS Serverless Support System  
-
+---
 Production-Grade Serverless Ticketing API using Terraform  
-
+---
 🎯 Project Impact  
-
+---
 Designed and deployed a scalable, production-style serverless backend system on AWS using fully modular Terraform infrastructure.
 
 This project simulates real-world DevOps engineering practices including:  
@@ -21,10 +22,11 @@ This project simulates real-world DevOps engineering practices including:
 
 - Least privilege IAM implementation  
 
-- Secure and scalable serverless design  
+- Secure and scalable serverless design  \
 
+---
 📌 Project Overview  
-
+---
 ---
 
 The AWS Serverless Support System is a fully automated ticketing API backend built using AWS serverless services and provisioned entirely with Terraform.
@@ -49,8 +51,9 @@ It provides two core endpoints:
 
 - Cloud debugging using CloudWatch logs  
 
+---
 🏛 High-Level Architecture  
-
+---
 Serverless API flow:  
 
 [` Client → API Gateway → Lambda → DynamoDB `]
