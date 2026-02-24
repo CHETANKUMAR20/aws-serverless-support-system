@@ -5,62 +5,60 @@
 ![API Gateway](https://img.shields.io/badge/API-HTTP%20API-yellow)
 ![Status](https://img.shields.io/badge/Project-Completed-brightgreen)
 
+🚀 AWS Serverless Support System  
 
+Production-Grade Serverless Ticketing API using Terraform  
 
-🚀 AWS Serverless Support System
-
-Production-Grade Serverless Ticketing API using Terraform
-
-🎯 Project Impact
+🎯 Project Impact  
 
 Designed and deployed a scalable, production-style serverless backend system on AWS using fully modular Terraform infrastructure.
 
-This project simulates real-world DevOps engineering practices including:
+This project simulates real-world DevOps engineering practices including:  
 
-Remote state management with locking
+- Remote state management with locking  
 
-Environment isolation (Dev & Prod)
+- Environment isolation (Dev & Prod)  
 
-Least privilege IAM implementation
+- Least privilege IAM implementation  
 
-Secure and scalable serverless design
+- Secure and scalable serverless design  
 
-📌 Project Overview
+📌 Project Overview  
 
 ---
 
 The AWS Serverless Support System is a fully automated ticketing API backend built using AWS serverless services and provisioned entirely with Terraform.
 
-It provides two core endpoints:
+It provides two core endpoints:  
 
-POST /tickets → Create a support ticket
+- POST /tickets → Create a support ticket  
 
-GET /tickets/{id} → Retrieve ticket information
+- GET /tickets/{id} → Retrieve ticket information  
 
-💡 What This Project Demonstrates
+💡 What This Project Demonstrates  
 
-Infrastructure as Code (IaC)
+- Infrastructure as Code (IaC)  
 
-Production-grade remote backend configuration
+- Production-grade remote backend configuration  
 
-Secure IAM implementation (Least Privilege)
+- Secure IAM implementation (Least Privilege)  
 
-Multi-environment management
+- Multi-environment management  
 
-Auto-scaling serverless architecture
+- Auto-scaling serverless architecture  
 
-Cloud debugging using CloudWatch logs
+- Cloud debugging using CloudWatch logs  
 
-🏛 High-Level Architecture
+🏛 High-Level Architecture  
 
-Serverless API flow:
-
+Serverless API flow:  
+```
 Client → API Gateway → Lambda → DynamoDB
-
-Infrastructure flow:
-
+```
+Infrastructure flow:  
+```
 Terraform → S3 Remote Backend → DynamoDB State Lock
-
+```
 Fully reproducible & version-controlled infrastructure
 
 🏗 Architecture Diagram
