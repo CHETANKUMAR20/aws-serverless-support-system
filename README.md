@@ -51,17 +51,23 @@ It provides two core endpoints:
 - Cloud debugging using CloudWatch logs  
 
 ---
-🏛 High-Level Architecture  
+## 🏛 High-Level Architecture
 
-Serverless API flow:  
+```mermaid
+flowchart LR
 
-[` Client → API Gateway → Lambda → DynamoDB `]
+    subgraph Serverless_API
+        A[Client / Postman] -->|HTTPS| B[API Gateway (HTTP API)]
+        B --> C[AWS Lambda (Node.js 18)]
+        C -->|Read / Write| D[Amazon DynamoDB]
+    end
 
-Infrastructure flow:  
-
-[` Terraform → S3 Remote Backend → DynamoDB State Lock `]
-
-` Fully reproducible & version-controlled infrastructure `
+    subgraph Terraform_Backend
+        T[Terraform CLI] --> S[S3 Bucket (tfstate)]
+        T --> L[DynamoDB Table (State Lock)]
+        S --- L
+    end
+```
 
 ---
 ## 🏗 Architecture Overview
