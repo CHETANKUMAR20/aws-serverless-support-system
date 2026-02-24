@@ -73,17 +73,19 @@ Infrastructure flow:
 ---
 🔄 Request Flow
 
-Client sends HTTPS request  
+flowchart LR
 
-API Gateway triggers Lambda  
+    A[Client\n(Web / Postman)] -->|HTTPS| B[API Gateway\n(HTTP API)]
+    B --> C[AWS Lambda\n(Node.js 18)]
+    C -->|Read / Write| D[Amazon DynamoDB\n(Tickets Table)]
 
-Lambda interacts with DynamoDB  
+    C --> E[CloudWatch Logs]
+    C --> F[IAM Role\n(Least Privilege)]
 
-IAM enforces least privilege  
+    G[Terraform] --> H[S3 Bucket\n(Terraform State)]
+    G --> I[DynamoDB Lock Table\n(State Locking)]
 
-Logs stored in CloudWatch  
-
-Terraform state stored in S3 with DynamoDB lock  
+    H --- I
 
 ---
 🧱 Project Structure
