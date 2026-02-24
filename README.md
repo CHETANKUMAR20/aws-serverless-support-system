@@ -55,7 +55,8 @@ It provides two core endpoints:
 
 Serverless API flow:
 
-```flowchart LR
+```mermaid
+flowchart LR
     Client["Client (Web / Postman)"]
     APIGW["API Gateway (HTTP API)"]
     Lambda["AWS Lambda (Node.js 18)"]
@@ -65,6 +66,7 @@ Serverless API flow:
     APIGW --> Lambda
     Lambda -->|Read / Write| Dynamo
 ```
+
 Infrastructure flow:
 
 Terraform → S3 Remote Backend → DynamoDB State Lock
