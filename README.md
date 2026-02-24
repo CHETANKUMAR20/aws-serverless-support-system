@@ -53,13 +53,13 @@ It provides two core endpoints:
 
 Serverless API flow:  
 
-|  Client → API Gateway → Lambda → DynamoDB  |
+[` Client → API Gateway → Lambda → DynamoDB `]
 
 Infrastructure flow:  
 
-|  Terraform → S3 Remote Backend → DynamoDB State Lock  |
+[` Terraform → S3 Remote Backend → DynamoDB State Lock `]
 
-`Fully reproducible & version-controlled infrastructure`
+Fully reproducible & version-controlled infrastructure  
 
 🏗 Architecture Diagram
 Infrastructure & Application Flow
