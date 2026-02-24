@@ -81,6 +81,7 @@ Logs stored in CloudWatch
 Terraform state stored in S3 with DynamoDB lock
 
 🧱 Project Structure
+```
 serverless-support-system/
 │
 ├── bootstrap/              # Creates backend (S3 + lock table)
@@ -95,7 +96,7 @@ serverless-support-system/
 ├── lambda-app/
 ├── docs/
 └── screenshots/
-
+```
 ✔ Modular
 ✔ Environment isolated
 ✔ Remote state secured
@@ -109,7 +110,8 @@ S3 Bucket
 
 DynamoDB Table (State Locking)
 
-Backend Screenshot
+Backend Screenshot  
+
 <p align="center"> <img src="docs/screenshots/08-terraform-backend-s3.png" width="700"> </p> <p align="center"> <img src="docs/screenshots/9-s3 stored tfstatefile.png" width="700"> </p>
 
 This prevents:
