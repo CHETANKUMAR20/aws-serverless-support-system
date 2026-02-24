@@ -112,7 +112,7 @@ S3 Bucket
 
 DynamoDB Table (State Locking)  
 
-Backend Screenshot    
+# Backend Screenshot    
 
 ![Backend S3](docs/screenshots/08-terraform-backend-s3.png)
 ![Backend State File](docs/screenshots/9-s3-stored-tfstatefile.png)
@@ -132,21 +132,21 @@ Prod	support-api-prod	support-tickets-prod
 
 This ensures safe testing without affecting production.
 
-🔎 Infrastructure Verification (Screenshots)
-🌐 API Gateway
+# 🔎 Infrastructure Verification (Screenshots)  
+🌐 API Gateway  
 ![API Gateway](docs/screenshots/02-api-gateway-overview.png)
-Environment Variables
+Environment Variables  
 
 ![Environment Variables](docs/screenshots/04-lambda-environment-variable.png)
-🗄 DynamoDB Table
+🗄 DynamoDB Table  
 ![DynamoDB Table](docs/screenshots/05-dynamodb-table.png)
-Item Stored
+Item Stored  
 ![Item Stored](docs/screenshots/06-dynamodb-item.png)
-📜 CloudWatch Logs
-![CloudWatch Logs](docs/screenshots/07-cloudwatch-logs.pn)
-🎟 Ticket Created Successfully
+📜 CloudWatch Logs  
+![CloudWatch Logs](docs/screenshots/07-cloudwatch-logs.png)
+🎟 Ticket Created Successfully  
 ![Ticket Created Successfully](docs/screenshots/ticket created successfully.png)
-🚧 Challenges Faced & Solutions
+🚧 Challenges Faced & Solutions  
 1️⃣ Terraform State Lock Conflict  
 
 Issue: Lock errors during apply
@@ -160,83 +160,83 @@ Implemented DynamoDB locking properly
 
 2️⃣ IAM AccessDeniedException  
 
-Issue: Lambda unable to access DynamoDB
+Issue: Lambda unable to access DynamoDB  
 Solution:
 
-Attached scoped IAM policy
+Attached scoped IAM policy  
 
-Restricted to specific table ARN
+Restricted to specific table ARN  
 
-Followed least privilege
+Followed least privilege  
 
 3️⃣ Lambda Code Not Updating  
 
-Issue: Changes not reflected
+Issue: Changes not reflected  
 Solution:
 
-Used source_code_hash
+Used source_code_hash  
 
-Proper zip packaging
+Proper zip packaging  
 
 4️⃣ API Gateway 500 Errors  
 
-Cause: Missing Lambda permission
+Cause: Missing Lambda permission  
 Fix:
 
-Added aws_lambda_permission resource
+Added aws_lambda_permission resource  
 
 5️⃣ Environment Variable Drift  
 
-Issue: Dev & Prod mismatch
+Issue: Dev & Prod mismatch  
 Fix:
 
-Parameterized variables properly
+Parameterized variables properly  
 
-💰 Cost Estimation (Monthly – Low Traffic)
-Service	Estimated Cost
-AWS Lambda (low usage)	~$0–2
-API Gateway	~$1–3
-DynamoDB (On-Demand)	~$1–4
-S3 (state storage)	<$1
-CloudWatch Logs	~$1
-Estimated Total: ~$5–10/month
+💰 Cost Estimation (Monthly – Low Traffic)  
+Service	Estimated Cost  
+AWS Lambda (low usage)	~$0–2  
+API Gateway	~$1–3  
+DynamoDB (On-Demand)	~$1–4  
+S3 (state storage)	<$1  
+CloudWatch Logs	~$1  
+Estimated Total: ~$5–10/month  
 
-Why cost-effective?
+Why cost-effective?  
 
-No EC2 servers
+No EC2 servers  
 
-No idle compute cost
+No idle compute cost  
 
-Fully managed services
+Fully managed services  
 
-Pay-per-request model
+Pay-per-request model  
 
-⚙️ How to Run This Project
+⚙️ How to Run This Project  
 1️⃣ Clone Repository  
 ```
 git clone https://github.com/<your-username>/serverless-support-system.git  
 cd serverless-support-system
 ```
 2️⃣ Configure AWS Credentials  
-aws configure
+aws configure  
 
-OR use environment variables:
+OR use environment variables:  
 ```
 export AWS_ACCESS_KEY_ID=""
 export AWS_SECRET_ACCESS_KEY=""
 export AWS_DEFAULT_REGION="ap-south-1"
 ```
-3️⃣ Bootstrap Backend (One Time)
+3️⃣ Bootstrap Backend (One Time)  
 ```
 cd bootstrap
 terraform init
 terraform apply
 ```
-This creates:
+This creates:  
 
-S3 backend bucket
+S3 backend bucket  
 
-DynamoDB lock table
+DynamoDB lock table  
 
 4️⃣ Deploy Dev Environment  
 ```
@@ -245,7 +245,7 @@ terraform init
 terraform plan
 terraform apply
 ```
-5️⃣ Deploy Production  
+5️⃣ Deploy Production   
 ```
 cd environments/prod
 terraform init
@@ -255,36 +255,36 @@ terraform apply
 
 6️⃣ Test API  
 
-Use Postman:
+Use Postman:  
 
-POST /tickets
-GET /tickets/{id}
-📈 Why Serverless Architecture?
-✅ Auto Scaling
+POST /tickets  
+GET /tickets/{id}  
+📈 Why Serverless Architecture?  
+✅ Auto Scaling  
 
-Lambda scales automatically without manual intervention.
+Lambda scales automatically without manual intervention.  
 
 ✅ Cost Efficient  
 
-Pay only when requests are processed.
+Pay only when requests are processed.  
 
 ✅ High Availability  
 
-AWS managed services provide built-in resilience.
+AWS managed services provide built-in resilience.  
 
 ✅ No Server Management  
 
-No patching, provisioning, or OS management.
+No patching, provisioning, or OS management.  
 
-✅ Faster DevOps Delivery  
+✅ Faster DevOps Delivery   
 
-Combined with Terraform:
+Combined with Terraform:  
 
-Reproducible infra
+Reproducible infra  
 
-Version controlled infrastructure
+Version controlled infrastructure  
 
-Easy multi-environment management
+Easy multi-environment management  
 
 🧠 What This Project Demonstrates  
 
