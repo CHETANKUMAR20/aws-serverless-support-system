@@ -50,21 +50,21 @@ It provides two core endpoints:
 
 - Cloud debugging using CloudWatch logs  
 
----
-## 🏛 High-Level Architecture
+
+🏛 High-Level Architecture
 
 ```mermaid
 flowchart LR
 
-    subgraph Serverless_API
-        A[Client / Postman] -->|HTTPS| B[API Gateway (HTTP API)]
-        B --> C[AWS Lambda (Node.js 18)]
-        C -->|Read / Write| D[Amazon DynamoDB]
+    subgraph Application_Flow["Serverless API Flow"]
+        A[Client] --> B[API Gateway]
+        B --> C[AWS Lambda]
+        C --> D[DynamoDB]
     end
 
-    subgraph Terraform_Backend
-        T[Terraform CLI] --> S[S3 Bucket (tfstate)]
-        T --> L[DynamoDB Table (State Lock)]
+    subgraph Infrastructure_Flow["Infrastructure Flow"]
+        T[Terraform] --> S[S3 Remote Backend]
+        T --> L[DynamoDB State Lock]
         S --- L
     end
 ```
